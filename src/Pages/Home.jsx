@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import Marqueeslider from '../Components/Marqueeslider.jsx';
-import milotCV from '../Components/CVMilotVerbani.pdf'; 
+import milotCV from '../Components/CV-MilotVerbani.pdf'; 
 import ShinyText from '../Components/ShinyText.jsx';
 import TrueFocus from '../Components/TrueFocus.jsx';
 import Orb from '../Components/Orb.jsx';
