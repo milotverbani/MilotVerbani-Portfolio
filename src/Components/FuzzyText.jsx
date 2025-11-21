@@ -2,7 +2,9 @@ import React, { useEffect, useRef } from 'react';
 
 const FuzzyText = ({
   children,
-  fontSize = 'clamp(2rem, 10vw, 10rem)',
+  className = '',
+  style = {},
+  fontSize, // optional override (e.g. '2rem' or 'clamp(...)')
   fontWeight = 900,
   fontFamily = 'inherit',
   color = '#fff',
@@ -11,14 +13,24 @@ const FuzzyText = ({
   hoverIntensity = 0.5
 }) => {
   const canvasRef = useRef(null);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     let animationFrameId;
     let isCancelled = false;
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
+
+    const cleanupPrevious = () => {
+      window.cancelAnimationFrame(animationFrameId);
+      if (canvas && canvas.cleanupFuzzyText) {
+        canvas.cleanupFuzzyText();
+      }
+    };
 
     const init = async () => {
+      cleanupPrevious();
       if (document.fonts?.ready) {
         await document.fonts.ready;
       }
@@ -27,21 +39,20 @@ const FuzzyText = ({
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
+      const computedStyle = window.getComputedStyle(container);
       const computedFontFamily =
-        fontFamily === 'inherit' ? window.getComputedStyle(canvas).fontFamily || 'sans-serif' : fontFamily;
+        fontFamily === 'inherit' ? computedStyle.fontFamily || 'sans-serif' : fontFamily;
 
-      const fontSizeStr = typeof fontSize === 'number' ? `${fontSize}px` : fontSize;
+      const fontSizeStr = fontSize || computedStyle.fontSize || '2rem';
+
+      // compute numeric font size in px
       let numericFontSize;
-      if (typeof fontSize === 'number') {
-        numericFontSize = fontSize;
-      } else {
-        const temp = document.createElement('span');
-        temp.style.fontSize = fontSize;
-        document.body.appendChild(temp);
-        const computedSize = window.getComputedStyle(temp).fontSize;
-        numericFontSize = parseFloat(computedSize);
-        document.body.removeChild(temp);
-      }
+      const temp = document.createElement('span');
+      temp.style.fontSize = fontSizeStr;
+      document.body.appendChild(temp);
+      const computedSize = window.getComputedStyle(temp).fontSize;
+      numericFontSize = parseFloat(computedSize);
+      document.body.removeChild(temp);
 
       const text = React.Children.toArray(children).join('');
 
@@ -75,8 +86,19 @@ const FuzzyText = ({
 
       const horizontalMargin = 50;
       const verticalMargin = 0;
-      canvas.width = offscreenWidth + horizontalMargin * 2;
-      canvas.height = tightHeight + verticalMargin * 2;
+
+      // device pixel ratio scaling for crispness
+      const dpr = window.devicePixelRatio || 1;
+      const desiredWidth = offscreenWidth + horizontalMargin * 2;
+      const desiredHeight = tightHeight + verticalMargin * 2;
+
+      canvas.width = Math.round(desiredWidth * dpr);
+      canvas.height = Math.round(desiredHeight * dpr);
+      canvas.style.width = `${desiredWidth}px`;
+      canvas.style.height = `${desiredHeight}px`;
+
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
       ctx.translate(horizontalMargin, verticalMargin);
 
       const interactiveLeft = horizontalMargin + xOffset;
@@ -118,9 +140,9 @@ const FuzzyText = ({
 
       const handleTouchMove = e => {
         if (!enableHover) return;
-        e.preventDefault();
         const rect = canvas.getBoundingClientRect();
         const touch = e.touches[0];
+        if (!touch) return;
         const x = touch.clientX - rect.left;
         const y = touch.clientY - rect.top;
         isHovering = isInsideTextArea(x, y);
@@ -133,7 +155,7 @@ const FuzzyText = ({
       if (enableHover) {
         canvas.addEventListener('mousemove', handleMouseMove);
         canvas.addEventListener('mouseleave', handleMouseLeave);
-        canvas.addEventListener('touchmove', handleTouchMove, { passive: false });
+        canvas.addEventListener('touchmove', handleTouchMove, { passive: true });
         canvas.addEventListener('touchend', handleTouchEnd);
       }
 
@@ -152,16 +174,25 @@ const FuzzyText = ({
 
     init();
 
+    const handleResize = () => {
+      isCancelled = false;
+      init();
+    };
+
+    window.addEventListener('resize', handleResize);
+
     return () => {
       isCancelled = true;
-      window.cancelAnimationFrame(animationFrameId);
-      if (canvas && canvas.cleanupFuzzyText) {
-        canvas.cleanupFuzzyText();
-      }
+      cleanupPrevious();
+      window.removeEventListener('resize', handleResize);
     };
-  }, [children, fontSize, fontWeight, fontFamily, color, enableHover, baseIntensity, hoverIntensity]);
+  }, [children, className, style, fontSize, fontWeight, fontFamily, color, enableHover, baseIntensity, hoverIntensity]);
 
-  return <canvas ref={canvasRef} />;
+  return (
+    <div ref={containerRef} className={className} style={{ display: 'inline-block', ...style }}>
+      <canvas ref={canvasRef} style={{ display: 'block', maxWidth: '100%', height: 'auto' }} aria-hidden />
+    </div>
+  );
 };
 
 export default FuzzyText;

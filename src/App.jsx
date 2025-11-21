@@ -8,12 +8,23 @@ import Contact from "./Components/Contact.jsx";
 import Footer from "./Components/Footer.jsx";
 import ScrollButton from "./Components/ScrollToTopButton.jsx";
 import ErrorPage from "./Pages/ErrorPage.jsx";
+import Changes from "./Components/Changes.js";
 
 
 
 function App() {
   return (
-    <Router>
+
+    <>
+      <Changes/>
+      </>
+  );
+}
+
+export default App;
+
+   { /*
+     <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -25,7 +36,5 @@ function App() {
       <ScrollButton />
       <Footer />
     </Router>
-  );
-}
-
-export default App;
+    */
+    }

@@ -21,7 +21,7 @@ function AboutMe() {
   {
     image: milotme,
     title: "Milot Verbani",
-    subtitle: "Software Engineer",
+    subtitle: "Software Developer",
     handle: "@milotverbani",
     borderColor: "#3B82F6",
     gradient: "linear-gradient(145deg, #EF4444, #000)",
