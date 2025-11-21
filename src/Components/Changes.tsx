@@ -8,7 +8,7 @@ function Changes() {
   return (
     <div className='bg-black w-full h-screen flex justify-center items-center px-4 text-center'>
       <FuzzyText
-        className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold"
+        className="text-2xl sm:text-2xl md:text-4xl lg:text-5xl font-bold"
         baseIntensity={0.2}
         hoverIntensity={hoverIntensity}
         enableHover={enableHover}
