@@ -74,7 +74,7 @@ function Home() {
 
        
           <motion.a
-            href={milotCV}
+            href='/'
             download
             whileHover={{ scale: 1.1, y: -3 }}
             whileTap={{ scale: 0.95 }}

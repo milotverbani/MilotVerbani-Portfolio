@@ -16,8 +16,8 @@ function App() {
   return (
 
     <>
-      <Changes/>
-      </>
+      <Changes />
+    </>
   );
 }
 
