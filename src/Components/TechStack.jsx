@@ -17,34 +17,34 @@ const TechStack = () => {
     {
       category: 'Programming Languages',
       items: [
-        { name: 'JavaScript', icon: jsIcon, experience: '2+ years' },
-        { name: 'C#', icon: cIcon, experience: '3+ years' },
-        { name: 'Python', icon: pythonIcon, experience: '1+ years' }
+        { name: 'JavaScript', icon: jsIcon, },
+        { name: 'C#', icon: cIcon, },
+        { name: 'Python', icon: pythonIcon, }
       ]
     },
     {
       category: 'Frontend',
       items: [
-        { name: 'JavaScript', icon: jsIcon, experience: '2+ years' },
-        { name: 'React', icon: reactIcon, experience: '2+ years' },
-        { name: 'TypeScript', icon: tsIcon, experience: '1+ years' },
-        { name: 'Tailwind CSS', icon: tailwindIcon, experience: '3+ years' },
-        { name: 'Bootstrap', icon: bootstrapIcon, experience: '3+ years' }
+        { name: 'JavaScript', icon: jsIcon,  },
+        { name: 'React', icon: reactIcon,  },
+        { name: 'TypeScript', icon: tsIcon, },
+        { name: 'Tailwind CSS', icon: tailwindIcon,  },
+        { name: 'Bootstrap', icon: bootstrapIcon, }
       ]
     },
     {
       category: 'Backend',
       items: [
-        { name: 'Laravel', icon: laravelIcon, experience: '2+ years' },
-        { name: 'ASP.NET', icon: aspnetIcon, experience: '3+ years' },
-        { name: 'PHP', icon: phpIcon, experience: '2+ years' }
+        { name: 'Laravel', icon: laravelIcon, },
+        { name: 'ASP.NET', icon: aspnetIcon, },
+        { name: 'PHP', icon: phpIcon, }
       ]
     },
     {
       category: 'Database',
       items: [
-        { name: 'MySQL', icon: mysqlIcon, experience: '2+ years' },
-        { name: 'SQL Server', icon: sqlIcon, experience: '3+ years' },
+        { name: 'MySQL', icon: mysqlIcon, },
+        { name: 'SQL Server', icon: sqlIcon, },
       ]
     }
   ];

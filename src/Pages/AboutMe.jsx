@@ -53,7 +53,7 @@ function AboutMe() {
             I’m BSc. Milot Verbani, a passionate software developer with a
             background in Computer Science. I have successfully completed a
             Full-Stack Web Developer course and hold a Bachelor’s degree in
-            Computer Science. With 2 years of hands-on experience in both
+            Computer Science. With 3 years of hands-on experience in both
             frontend and backend development, I enjoy building modern,
             functional, and scalable web applications. Always eager to learn and
             take on new challenges, I strive to turn ideas into impactful
