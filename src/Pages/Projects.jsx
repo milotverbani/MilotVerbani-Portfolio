@@ -85,7 +85,7 @@ const Projects = () => {
       description: "Full-stack system for car sales and inventory with RESTful API",
       tags: ["React" , "Aspnet" , "Sql Server"],
       image: carsale,
-      githubLink: "https://github.com/milotverbani/PHP-Project",
+      githubLink: "#",
       liveLink: "#"
     },
   ];
