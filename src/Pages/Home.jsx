@@ -93,9 +93,9 @@ function Home() {
             whileTap={{ scale: 0.95 }}
             className="group text-base sm:text-lg cursor-pointer relative inline-flex h-[40px] items-center justify-center overflow-hidden rounded-md bg-slate-950 px-4 sm:px-6 font-medium text-neutral-200 transition"
           >
-            <span className='p-2 sm:p-4'>
-              <ShinyText text="MY CV" disabled={false} speed={3} />
-            </span>
+           <a href="/CV-Milot Verbani.pdf" download>
+  <ShinyText text="MY CV" disabled={false} speed={3} />
+</a>
             <div className="absolute inset-0 flex h-full w-full justify-center transform group-hover:duration-1000 group-hover:translate-x-full group-hover:skew-x-[-12deg] -translate-x-full skew-x-[-12deg]">
               <div className="relative h-full w-8 bg-white/20" />
             </div>
