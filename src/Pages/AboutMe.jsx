@@ -59,7 +59,7 @@ function AboutMe() {
             take on new challenges, I strive to turn ideas into impactful
             digital solutions.
           </p>
-          <Link to="/Projects">
+          <a href="#projects">
             <motion.div
             whileHover={{ scale: 1.1, y: -3 }}
             whileTap={{ scale: 0.95 }}
@@ -72,7 +72,7 @@ function AboutMe() {
               <div className="relative h-full w-8 bg-white/20" />
             </div>
           </motion.div>
-        </Link>
+        </a>
           <div className="grid grid-cols-2 gap-6 mt-8">
             {[
               { value: 10, label: "Projects", suffix: "+" },

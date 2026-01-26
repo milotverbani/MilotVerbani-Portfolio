@@ -6,6 +6,11 @@ import ShinyText from '../Components/ShinyText.jsx';
 import TrueFocus from '../Components/TrueFocus.jsx';
 import Orb from '../Components/Orb.jsx';
 import { Link } from 'react-router-dom';
+import GridScan from '../Components/GridScan.jsx';
+import FloatingLines from '../Components/FloatingLines.jsx';
+import AboutMe from './AboutMe.jsx';
+import Projects from './Projects.jsx';
+import Contact from '../Components/Contact.jsx';
 
 function Home() {
   return (
@@ -16,12 +21,20 @@ function Home() {
     >
      
       <div className="absolute inset-0 z-20">
-        <Orb
-          hoverIntensity={4.5}
-          rotateOnHover={true}
-          hue={2}
-          forceHoverState={false}
-        />
+      
+<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+  <FloatingLines 
+    enabledWaves={["top","middle","bottom"]}
+    // Array - specify line count per wave; Number - same count for all waves
+    lineCount={5}
+    // Array - specify line distance per wave; Number - same distance for all waves
+    lineDistance={5}
+    bendRadius={5}
+    bendStrength={-0.5}
+    interactive={true}
+    parallax={true}
+  />
+</div>
       </div>
 
    
@@ -57,7 +70,7 @@ function Home() {
        
         <div className='flex sm:flex-row gap-3 sm:gap-4 mt-6 relative z-30'>
           
-            <Link to="/AboutMe">
+            <a href="#about">
             <motion.div
             whileHover={{ scale: 1.1, y: -3 }}
             whileTap={{ scale: 0.95 }}
@@ -70,7 +83,7 @@ function Home() {
               <div className="relative h-full w-8 bg-white/20" />
             </div>
           </motion.div>
-        </Link>
+        </a>
 
        
           <motion.a
@@ -97,6 +110,9 @@ function Home() {
           className='mt-8 w-full relative z-20'
         >
           <Marqueeslider/>
+          <AboutMe/>
+          <Projects/>
+          <Contact/>
         </motion.div>
       </div>
     </section>

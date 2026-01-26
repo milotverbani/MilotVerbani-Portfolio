@@ -69,15 +69,7 @@ const Contact = () => {
 
   return (
     <div id="contact" className="relative bg-black overflow-hidden">
-   <div style={{ width: '100%', height: '100%', position: 'absolute' }}>
-  <Lightning
-    hue={220}
-    xOffset={0}
-    speed={1}
-    intensity={1}
-    size={3}
-  />
-</div>
+   
       <div className="absolute  inset-0 z-0">
         <motion.div
           initial={{ opacity: 0 }}
