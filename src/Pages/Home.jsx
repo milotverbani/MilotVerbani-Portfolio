@@ -46,7 +46,7 @@ function Home() {
 
   const stats = [
     { value: '4+', label: 'Years Experience', icon: <Terminal className="w-5 h-5" /> },
-    { value: '50+', label: 'Projects', icon: <Code2 className="w-5 h-5" /> },
+    { value: '10+', label: 'Projects', icon: <Code2 className="w-5 h-5" /> },
     { value: '∞', label: 'Solutions', icon: <Cpu className="w-5 h-5" /> },
     { value: '100%', label: 'Commitment', icon: <Sparkles className="w-5 h-5" /> },
   ];
@@ -56,9 +56,9 @@ function Home() {
     <>
       <section 
         id='home'
-        className="relative bg-black flex flex-col justify-center items-center min-h-screen overflow-hidden"
+        className="relative flex flex-col justify-center items-center min-h-screen overflow-hidden"
       >
-        {/* Background - Keeping your FloatingLines */}
+        {/* Background - FloatingLines në fund */}
         <div className="absolute inset-0 z-0">
           <div style={{ width: '100%', height: '100vh', position: 'relative' }}>
             <FloatingLines 
@@ -73,11 +73,11 @@ function Home() {
           </div>
         </div>
 
-        {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black z-10" />
+        {/* Gradient overlay - mbi FloatingLines, nën content */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black z-1" />
 
-        {/* Animated grid pattern */}
-        <div className="absolute inset-0 z-5 opacity-10">
+        {/* Grid pattern - mbi gradient */}
+        <div className="absolute inset-0 z-2 opacity-10">
           <div className="absolute inset-0"
             style={{
               backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)`,
@@ -86,8 +86,8 @@ function Home() {
           />
         </div>
 
-        {/* Floating particles */}
-        <div className="absolute inset-0 z-5">
+        {/* Floating particles - mbi grid */}
+        <div className="absolute inset-0 z-3">
           {[...Array(30)].map((_, i) => (
             <motion.div
               key={i}
@@ -112,10 +112,11 @@ function Home() {
           ))}
         </div>
 
-        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+        {/* Main Content Container - mbi të gjitha background elementet */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-20">
           
-          {/* Main Content Container */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Grid layout me margin-bottom të mjaftueshme */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
             
             {/* Left Column - Text Content */}
             <motion.div
@@ -201,12 +202,12 @@ function Home() {
                 ))}
               </motion.div>
 
-              {/* CTA Buttons */}
+              {/* CTA Buttons - me z-index të lartë */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-                className="flex flex-col sm:flex-row gap-4 pt-6"
+                className="flex flex-col sm:flex-row gap-4 pt-6 relative z-20"
               >
                 {/* About Me Button */}
                 <motion.a
@@ -248,7 +249,7 @@ function Home() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="relative h-[500px]  flex items-center justify-center"
+              className="relative h-[500px] flex items-center justify-center"
             >
               {/* Central Orb */}
               <motion.div
@@ -367,30 +368,30 @@ function Home() {
               </motion.div>
             </motion.div>
           </div>
-
-          {/* Scroll Indicator */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.5 }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="flex flex-col items-center gap-2"
-            >
-              <span className="text-sm text-gray-400 tracking-wider">SCROLL</span>
-              <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-                <motion.div
-                  animate={{ y: [0, 12, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                  className="w-1 h-3 bg-cyan-400 rounded-full mt-2"
-                />
-              </div>
-            </motion.div>
-          </motion.div>
         </div>
+
+        {/* Scroll Indicator - POSAÇËRISHT MË POSHTË, NËN BUTONAT */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 mt-8"
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="flex flex-col items-center gap-2"
+          >
+            <span className="text-sm text-gray-400 tracking-wider">SCROLL</span>
+            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+              <motion.div
+                animate={{ y: [0, 12, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                className="w-1 h-3 bg-cyan-400 rounded-full mt-2"
+              />
+            </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Other Sections */}
