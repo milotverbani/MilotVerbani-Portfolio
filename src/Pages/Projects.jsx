@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FiGithub, FiExternalLink, FiCode } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -14,6 +14,19 @@ import carsale from '/images/carsale.jpg';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('All');
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint is 768px
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Kept your exact data structure
   const projects = [
@@ -117,6 +130,11 @@ const Projects = () => {
     return pattern[index % pattern.length];
   };
 
+  // Mobile link classes - always visible
+  const mobileLinkClasses = "opacity-100 translate-y-0";
+
+  // Desktop link classes - visible on hover
+  const desktopLinkClasses = "opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out";
 
   return (
     <section id="projects" className="py-20 bg-[#0a0b1e]">
@@ -202,22 +220,55 @@ const Projects = () => {
                         </p>
 
                         {/* Links Container - Fades in and moves up on hover */}
-                        <div className="flex items-center gap-4 pt-4 border-t border-gray-700/50 opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
+                        <div className={`flex items-center gap-4 pt-4 border-t border-gray-700/50 ${
+                          isMobile ? mobileLinkClasses : desktopLinkClasses
+                        }`}>
                             {project.githubLink && project.githubLink !== "#" ? (
-                                <a href={project.githubLink} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-white hover:text-blue-400 transition-colors">
-                                <FiGithub size={18} /> <span className="font-medium">Source</span>
+                                <a 
+                                  href={project.githubLink} 
+                                  target="_blank" 
+                                  rel="noreferrer" 
+                                  className="flex items-center gap-2 text-sm text-white hover:text-blue-400 transition-colors"
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  <FiGithub size={18} /> 
+                                  <span className="font-medium hidden sm:inline">Source</span>
+                                  <span className="font-medium inline sm:hidden">Code</span>
                                 </a>
                             ) : (
                                 <span className="flex items-center gap-2 text-sm text-gray-600 cursor-not-allowed">
-                                    <FiCode size={18} /> <span>Private</span>
+                                    <FiCode size={18} /> 
+                                    <span className="hidden sm:inline">Private</span>
+                                    <span className="inline sm:hidden">Priv</span>
                                 </span>
                             )}
 
-                            {project.liveLink && project.liveLink !== "#" && (
-                                <a href={project.liveLink} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg ml-auto transition-colors shadow-lg shadow-blue-900/20">
-                                <span>Live Demo</span> <FiExternalLink size={18} /> 
+                            {project.liveLink && project.liveLink !== "#" ? (
+                                <a 
+                                  href={project.liveLink} 
+                                  target="_blank" 
+                                  rel="noreferrer" 
+                                  className="flex items-center gap-2 text-sm text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg ml-auto transition-colors shadow-lg shadow-blue-900/20"
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  <span className="hidden sm:inline">Live Demo</span>
+                                  <span className="inline sm:hidden">Live</span>
+                                  <FiExternalLink size={18} /> 
                                 </a>
-                            )}
+                            ) : project.githubLink && project.githubLink !== "#" ? (
+                                // Show View Code button if there's no live link but there's GitHub link
+                                <a 
+                                  href={project.githubLink} 
+                                  target="_blank" 
+                                  rel="noreferrer"
+                                  className="flex items-center gap-2 text-sm text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg ml-auto transition-colors shadow-lg shadow-blue-900/20"
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  <span className="hidden sm:inline">View Code</span>
+                                  <span className="inline sm:hidden">Code</span>
+                                  <FiCode size={18} />
+                                </a>
+                            ) : null}
                         </div>
                     </div>
                   </div>

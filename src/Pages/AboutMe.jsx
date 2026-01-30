@@ -76,7 +76,7 @@ function AboutMe() {
           <div className="grid grid-cols-2 gap-6 mt-8">
             {[
               { value: 10, label: "Projects", suffix: "+" },
-              { value: 3, label: "Years", suffix: "+" }
+              { value: 4, label: "Years", suffix: "+" }
             ].map((stat, index) => (
               <div
                 key={index}
