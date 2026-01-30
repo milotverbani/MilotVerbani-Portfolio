@@ -333,7 +333,7 @@ function Home() {
                       <tech.Icon className="w-8 h-8" />
                       
                       {/* Tooltip */}
-                      <div className="absolute -top-30 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                      <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
                         <div className="px-3 py-1.5 rounded-lg bg-black/90 backdrop-blur-sm border border-white/10">
                           <span className="text-xs font-medium text-white">{tech.label}</span>
                           <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-black/90 rotate-45 border-r border-b border-white/10" />
