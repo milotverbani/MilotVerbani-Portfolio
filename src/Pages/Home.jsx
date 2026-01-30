@@ -46,7 +46,7 @@ function Home() {
 
   const stats = [
     { value: '4+', label: 'Years Experience', icon: <Terminal className="w-5 h-5" /> },
-    { value: '10+', label: 'Projects', icon: <Code2 className="w-5 h-5" /> },
+    { value: '50+', label: 'Projects', icon: <Code2 className="w-5 h-5" /> },
     { value: '∞', label: 'Solutions', icon: <Cpu className="w-5 h-5" /> },
     { value: '100%', label: 'Commitment', icon: <Sparkles className="w-5 h-5" /> },
   ];
@@ -56,7 +56,7 @@ function Home() {
     <>
       <section 
         id='home'
-        className="relative flex flex-col justify-center items-center min-h-screen overflow-hidden"
+        className="relative bg-black flex flex-col justify-center items-center min-h-screen overflow-hidden"
       >
         {/* Background - FloatingLines në fund */}
         <div className="absolute inset-0 z-0">
