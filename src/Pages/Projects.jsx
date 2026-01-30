@@ -11,6 +11,8 @@ import phpFotballImg from '/images/phpfotball.png';
 import rentCarImg from '/images/onlinerent.jpg';
 import jobsportalimg from '/images/jobportal.png';
 import carsale from '/images/carsale.jpg';
+import bus from '/images/bus.jpg';
+import pythonai from '/images/python.jpg';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -101,9 +103,27 @@ const Projects = () => {
       githubLink: "#",
       liveLink: "#"
     },
+    {
+      id: 9,
+      title: "Bus Booking System",
+      description: "Full-stack system for bus booking and management with ASP NET Core",
+      tags: ["Aspnet" , "Sql Server"],
+      image: bus,
+      githubLink: "#",
+      liveLink: "#"
+    },
+    {
+      id: 10,
+      title: "Python AI Project",
+      description: "An AI project built with Python and TensorFlow, featuring machine learning models and data visualization.",
+      tags: ["Python", "TensorFlow", "Machine Learning"],
+      image: pythonai,
+      githubLink: "#",
+      liveLink: "#"
+    },
   ];
 
-  const filters = ['All', 'React', 'PHP', 'Laravel', 'JavaScript', 'Aspnet'];
+  const filters = ['All', 'React', 'PHP', 'Laravel', 'JavaScript', 'Aspnet' , 'Python'];
 
   const filteredProjects = activeFilter === 'All' 
     ? projects 
