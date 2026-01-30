@@ -56,7 +56,7 @@ function Home() {
     <>
       <section 
         id='home'
-        className="relative  flex flex-col justify-center items-center min-h-screen overflow-hidden"
+        className="relative bg-black flex flex-col justify-center items-center min-h-screen overflow-hidden"
       >
         {/* Background - FloatingLines në fund */}
         <div className="absolute inset-0 z-0">
