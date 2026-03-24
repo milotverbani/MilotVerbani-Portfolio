@@ -56,7 +56,7 @@ function Home() {
     <>
       <section 
         id='home'
-        className="relative bg-black flex flex-col justify-center items-center min-h-screen overflow-hidden"
+        className="relative flex flex-col justify-center items-center min-h-screen overflow-hidden"
       >
         {/* Background - FloatingLines në fund */}
         <div className="absolute inset-0 z-0">
@@ -73,8 +73,18 @@ function Home() {
           </div>
         </div>
 
+<<<<<<< Updated upstream
         {/* Gradient overlay - mbi FloatingLines, nën content */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black z-1" />
+=======
+<<<<<<< HEAD
+        {/* Subtle gradient overlay */}
+       
+=======
+        {/* Gradient overlay - mbi FloatingLines, nën content */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black z-1" />
+>>>>>>> d0ccf9f4cd12f9e6dd8a048cb1e02c3899ff9935
+>>>>>>> Stashed changes
 
         {/* Grid pattern - mbi gradient */}
         <div className="absolute inset-0 z-2 opacity-10">
@@ -207,7 +217,15 @@ function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
+<<<<<<< Updated upstream
                 className="flex flex-col sm:flex-row gap-4 pt-6 relative z-20"
+=======
+<<<<<<< HEAD
+                className="flex flex-col sm:flex-row  gap-4 pt-6"
+=======
+                className="flex flex-col sm:flex-row gap-4 pt-6 relative z-20"
+>>>>>>> d0ccf9f4cd12f9e6dd8a048cb1e02c3899ff9935
+>>>>>>> Stashed changes
               >
                 {/* About Me Button */}
                 <motion.a
