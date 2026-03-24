@@ -42,7 +42,7 @@ function Home() {
 
   const stats = [
     { value: '4+', label: 'Years Experience', icon: <Terminal className="w-5 h-5" /> },
-    { value: '10+', label: 'Projects', icon: <Code2 className="w-5 h-5" /> },
+    { value: '20+', label: 'Projects', icon: <Code2 className="w-5 h-5" /> },
     { value: '∞', label: 'Solutions', icon: <Cpu className="w-5 h-5" /> },
     { value: '100%', label: 'Commitment', icon: <Sparkles className="w-5 h-5" /> },
   ];
@@ -186,7 +186,7 @@ function Home() {
 
                 {/* CV Download Button */}
                 <motion.a
-                  href="/CV-Milot Verbani.pdf"
+                  href="/Cv-MilotVerbani.pdf"
                   download
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}

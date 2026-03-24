@@ -82,7 +82,7 @@ function AboutMe() {
         </a>
           <div className="grid grid-cols-2 gap-6 mt-8">
             {[
-              { value: 10, label: "Projects", suffix: "+" },
+              { value: 20, label: "Projects", suffix: "+" },
               { value: 4, label: "Years", suffix: "+" }
             ].map((stat, index) => (
               <div
@@ -97,7 +97,7 @@ function AboutMe() {
             ))}
           </div>
 
-          <div className="flex gap-5 mt-6">
+          <div className="flex gap-5 mt-6 mb-4">
             {socialIcons.map((social, idx) => (
               <a
                 key={idx}

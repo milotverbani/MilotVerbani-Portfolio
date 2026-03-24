@@ -33,13 +33,13 @@ function Navbar() {
             </span>
           </h1>
 
-          <ul className="hidden md:flex items-center gap-1">
+          <ul className="hidden md:flex  items-center gap-1">
             {links.map((link, idx) => (
               <li key={idx}>
                 <button
                   type="button"
                   onClick={() => handleScroll(link.id)}
-                  className="relative px-3 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors duration-200 after:absolute after:left-3 after:right-3 after:bottom-1 after:h-px after:scale-x-0 after:bg-cyan-400 after:origin-right hover:after:scale-x-100 hover:after:origin-left after:transition-transform after:duration-300"
+                  className="relative cursor-pointer px-3 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors duration-200 after:absolute after:left-3 after:right-3 after:bottom-1 after:h-px after:scale-x-0 after:bg-cyan-400 after:origin-right hover:after:scale-x-100 hover:after:origin-left after:transition-transform after:duration-300"
                 >
                   {link.name}
                 </button>
