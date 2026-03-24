@@ -8,9 +8,11 @@ const enableHover = true;
 
 function ErrorPage() {
   return (
-    <div className='bg-black w-full h-[790px]  flex justify-center items-center flex-col gap-6'>
+    <div className="bg-zinc-950 min-h-[calc(100vh-4rem)] w-full flex justify-center items-center flex-col gap-8 px-4 py-20 relative overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 opacity-30" style={{ background: 'radial-gradient(ellipse at 50% 30%, rgba(34, 211, 238, 0.12), transparent)' }} aria-hidden />
       <FuzzyText 
       fontSize="3rem"
+      className="relative z-10"
         baseIntensity={0.2} 
         hoverIntensity={hoverIntensity} 
         enableHover={enableHover}
@@ -19,17 +21,16 @@ function ErrorPage() {
       </FuzzyText>
       <FuzzyText 
       fontSize="3.5rem"
+      className="relative z-10"
         baseIntensity={0.2} 
         hoverIntensity={hoverIntensity} 
         enableHover={enableHover}
       >
         NOT FOUND
       </FuzzyText>
-        <Link to="/">
+        <Link to="/" className="relative z-10">
             <div
-            whileHover={{ scale: 1.1, y: -3 }}
-            whileTap={{ scale: 0.95 }}
-            className="group text-base sm:text-lg cursor-pointer relative inline-flex h-[40px] items-center justify-center overflow-hidden rounded-md bg-slate-950 px-4 sm:px-6 font-medium text-neutral-200 transition"
+            className="group text-base sm:text-lg cursor-pointer relative inline-flex h-[44px] items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] px-4 sm:px-6 font-medium text-zinc-200 hover:border-cyan-500/30 transition"
           >
             <span className='p-2 sm:p-4'>
               <ShinyText text="GO HOME" disabled={false} speed={3} />

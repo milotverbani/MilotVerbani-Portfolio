@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Marquee from 'react-fast-marquee';
 import { motion } from 'framer-motion';
 
@@ -26,8 +26,19 @@ const technologies = [
 ];
 
 function Marqueeslider() {
+  const particleSeeds = useMemo(
+    () =>
+      Array.from({ length: 16 }, (_, i) => ({
+        id: i,
+        left: `${8 + ((i * 17) % 84)}%`,
+        top: `${6 + ((i * 23) % 78)}%`,
+        duration: 4 + (i % 4) * 0.85,
+      })),
+    []
+  );
+
   return (
-    <section className="relative w-full py-20 bg-gradient-to-b from-black via-gray-900 to-black overflow-x-hidden">
+    <section className="relative w-full py-24 bg-gradient-to-b from-zinc-950 via-zinc-900/80 to-zinc-950 overflow-x-hidden border-t border-white/[0.06]">
 
       {/* Background blobs */}
       <div className="absolute inset-0 pointer-events-none">
@@ -36,23 +47,19 @@ function Marqueeslider() {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl" />
       </div>
 
-      {/* Floating particles – FIXED (no vw overflow) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(16)].map((_, i) => (
+        {particleSeeds.map((p) => (
           <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-cyan-400/30 rounded-full"
-            initial={{
-              x: Math.random() * window.innerWidth * 0.9,
-              y: Math.random() * window.innerHeight,
-              opacity: 0.3,
-            }}
+            key={p.id}
+            className="absolute w-1 h-1 bg-cyan-400/25 rounded-full"
+            style={{ left: p.left, top: p.top }}
             animate={{
-              x: ['-10%', '10%'],
-              y: ['-10%', '10%'],
+              x: ['-8px', '8px'],
+              y: ['-6px', '6px'],
+              opacity: [0.2, 0.45, 0.2],
             }}
             transition={{
-              duration: 4 + Math.random() * 3,
+              duration: p.duration,
               repeat: Infinity,
               repeatType: 'mirror',
               ease: 'easeInOut',
@@ -71,21 +78,21 @@ function Marqueeslider() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <span className="inline-block px-4 py-2 mb-4 rounded-full bg-white/5 border border-white/10 text-sm tracking-widest text-cyan-400">
+          <span className="inline-block px-4 py-2 mb-4 rounded-full bg-cyan-500/[0.08] border border-cyan-500/20 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400/90">
             TECHNOLOGY STACK
           </span>
 
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
             Tech I Work With
           </h2>
 
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-zinc-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
             Modern tools I use to build scalable, fast and clean applications
           </p>
         </motion.div>
 
         {/* Slider */}
-        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+        <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl shadow-[0_24px_48px_-24px_rgba(0,0,0,0.45)]">
           <Marquee speed={45} gradient={false} pauseOnHover>
             <div className="flex items-center gap-14 px-10 py-10">
               {technologies.map((tech) => (
@@ -95,7 +102,7 @@ function Marqueeslider() {
                   transition={{ type: 'spring', stiffness: 250, damping: 18 }}
                   className="flex flex-col items-center min-w-[100px]"
                 >
-                  <div className="relative h-24 w-24 flex items-center justify-center rounded-2xl bg-white/10 border border-white/20">
+                  <div className="relative h-24 w-24 flex items-center justify-center rounded-2xl bg-white/[0.06] border border-white/[0.1]">
                     <img
                       src={tech.img}
                       alt={tech.name}
@@ -103,7 +110,7 @@ function Marqueeslider() {
                     />
                   </div>
 
-                  <span className="mt-4 text-sm text-gray-300 font-medium">
+                  <span className="mt-4 text-sm text-zinc-400 font-medium">
                     {tech.name}
                   </span>
                 </motion.div>
@@ -113,7 +120,7 @@ function Marqueeslider() {
         </div>
 
         {/* Footer badge */}
-        <div className="mt-12 inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400">
+        <div className="mt-12 inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/[0.03] border border-white/[0.08] text-sm text-zinc-500">
           <span className="flex gap-1">
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse delay-150" />

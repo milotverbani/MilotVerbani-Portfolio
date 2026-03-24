@@ -157,24 +157,33 @@ const Projects = () => {
   const desktopLinkClasses = "opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out";
 
   return (
-    <section id="projects" className="py-20 bg-[#0a0b1e]">
-      <div className="container mx-auto px-4">
+    <section id="projects" className="relative py-24 bg-zinc-950 overflow-hidden">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-40"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 60% at 50% -30%, rgba(34, 211, 238, 0.07), transparent), radial-gradient(ellipse 60% 50% at 100% 100%, rgba(59, 130, 246, 0.05), transparent)",
+        }}
+        aria-hidden
+      />
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="mb-12 text-center">
-           <h2 className="text-4xl font-bold text-white mb-4">Project Gallery</h2>
-           <p className="text-gray-400 max-w-xl mx-auto">A collection of my work, featuring varied technologies and varied layouts.</p>
+        <div className="mb-14 text-center max-w-2xl mx-auto">
+           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 tracking-tight">Project Gallery</h2>
+           <p className="text-zinc-400 text-sm sm:text-base leading-relaxed">A collection of my work, featuring varied technologies and varied layouts.</p>
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex justify-center mb-12 flex-wrap gap-3">
+        <div className="flex justify-center mb-14 flex-wrap gap-2">
           {filters.map(filter => (
             <button
               key={filter}
+              type="button"
               onClick={() => setActiveFilter(filter)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 border ${
                 activeFilter === filter
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
+                  ? 'bg-cyan-500/15 text-cyan-200 border-cyan-400/35 shadow-[0_0_24px_-4px_rgba(34,211,238,0.35)]'
+                  : 'bg-white/[0.03] text-zinc-400 border-white/[0.08] hover:text-white hover:border-white/15'
               }`}
             >
               {filter}
@@ -205,7 +214,7 @@ const Projects = () => {
                   exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
                   transition={{ duration: 0.4, type: 'spring', damping: 15 }}
                   // Combine base classes with the dynamic span class
-                  className={`relative group rounded-2xl overflow-hidden bg-gray-900 shadow-xl ${spanClass}`}
+                  className={`relative group rounded-2xl overflow-hidden bg-zinc-900/80 border border-white/[0.06] shadow-[0_24px_48px_-24px_rgba(0,0,0,0.8)] ${spanClass}`}
                 >
                   {/* Background Image - fills container and zooms on hover */}
                   <img
@@ -215,7 +224,7 @@ const Projects = () => {
                   />
                   
                   {/* Dark Gradient Overlay - ensures text readability at bottom */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0b1e] via-[#0a0b1ee6] to-transparent opacity-90"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/85 to-transparent opacity-95"></div>
 
                   {/* Content Container - positioned at the bottom */}
                   <div className="absolute inset-x-0 bottom-0 p-6 flex flex-col justify-end h-full pointer-events-none">
@@ -224,23 +233,23 @@ const Projects = () => {
                         {/* Tags - minimalist style */}
                         <div className="flex flex-wrap gap-2 mb-3">
                         {project.tags.slice(0, 3).map(tag => (
-                            <span key={tag} className="text-[11px] font-semibold uppercase tracking-wider text-blue-300 bg-blue-900/30 px-2 py-1 rounded-md backdrop-blur-sm border border-blue-500/20">
+                            <span key={tag} className="text-[10px] font-semibold uppercase tracking-wider text-cyan-200/90 bg-cyan-500/10 px-2 py-1 rounded-md backdrop-blur-sm border border-cyan-400/20">
                             {tag}
                             </span>
                         ))}
                         </div>
 
-                        <h3 className="text-2xl font-bold text-white mb-2 leading-tight group-hover:text-blue-400 transition-colors">
+                        <h3 className="text-2xl font-bold text-white mb-2 leading-tight group-hover:text-cyan-300 transition-colors">
                         {project.title}
                         </h3>
                         
                         {/* Description - truncated to 2 lines */}
-                        <p className="text-gray-400 text-sm line-clamp-2 mb-4 group-hover:text-gray-300 transition-colors">
+                        <p className="text-zinc-400 text-sm line-clamp-2 mb-4 group-hover:text-zinc-300 transition-colors">
                         {project.description}
                         </p>
 
                         {/* Links Container - Fades in and moves up on hover */}
-                        <div className={`flex items-center gap-4 pt-4 border-t border-gray-700/50 ${
+                        <div className={`flex items-center gap-4 pt-4 border-t border-white/[0.08] ${
                           isMobile ? mobileLinkClasses : desktopLinkClasses
                         }`}>
                             {project.githubLink && project.githubLink !== "#" ? (
@@ -248,7 +257,7 @@ const Projects = () => {
                                   href={project.githubLink} 
                                   target="_blank" 
                                   rel="noreferrer" 
-                                  className="flex items-center gap-2 text-sm text-white hover:text-blue-400 transition-colors"
+                                  className="flex items-center gap-2 text-sm text-white hover:text-cyan-300 transition-colors"
                                   onClick={(e) => e.stopPropagation()}
                                 >
                                   <FiGithub size={18} /> 
@@ -256,7 +265,7 @@ const Projects = () => {
                                   <span className="font-medium inline sm:hidden">Code</span>
                                 </a>
                             ) : (
-                                <span className="flex items-center gap-2 text-sm text-gray-600 cursor-not-allowed">
+                                <span className="flex items-center gap-2 text-sm text-zinc-600 cursor-not-allowed">
                                     <FiCode size={18} /> 
                                     <span className="hidden sm:inline">Private</span>
                                     <span className="inline sm:hidden">Priv</span>
@@ -268,7 +277,7 @@ const Projects = () => {
                                   href={project.liveLink} 
                                   target="_blank" 
                                   rel="noreferrer" 
-                                  className="flex items-center gap-2 text-sm text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg ml-auto transition-colors shadow-lg shadow-blue-900/20"
+                                  className="flex items-center gap-2 text-sm text-white bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 px-4 py-2 rounded-lg ml-auto transition-all shadow-lg shadow-cyan-900/20"
                                   onClick={(e) => e.stopPropagation()}
                                 >
                                   <span className="hidden sm:inline">Live Demo</span>
@@ -281,7 +290,7 @@ const Projects = () => {
                                   href={project.githubLink} 
                                   target="_blank" 
                                   rel="noreferrer"
-                                  className="flex items-center gap-2 text-sm text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg ml-auto transition-colors shadow-lg shadow-blue-900/20"
+                                  className="flex items-center gap-2 text-sm text-white bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 px-4 py-2 rounded-lg ml-auto transition-all shadow-lg shadow-cyan-900/20"
                                   onClick={(e) => e.stopPropagation()}
                                 >
                                   <span className="hidden sm:inline">View Code</span>

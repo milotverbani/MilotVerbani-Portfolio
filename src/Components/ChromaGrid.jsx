@@ -18,8 +18,7 @@ export const ChromaGrid = ({
   const setY = useRef(null);
   const pos = useRef({ x: 0, y: 0 });
 
-  
-  const data = items?.length ? items : demo;
+  const data = items?.length ? items : [];
 
   useEffect(() => {
     const el = rootRef.current;

@@ -24,8 +24,9 @@ function ScrollToTopButton() {
     <>
       {visible && (
         <button
+          type="button"
           onClick={scrollToTop}
-          className="fixed bottom-8 cursor-pointer right-8 w-12 h-12 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 z-50"
+          className="fixed bottom-8 cursor-pointer right-6 sm:right-8 w-12 h-12 rounded-full flex items-center justify-center text-white bg-gradient-to-br from-cyan-600 to-blue-700 hover:from-cyan-500 hover:to-blue-600 border border-white/10 shadow-[0_12px_40px_-8px_rgba(34,211,238,0.4)] transition-all duration-300 z-50"
           aria-label="Scroll to top"
         >
           <svg

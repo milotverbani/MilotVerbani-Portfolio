@@ -50,49 +50,45 @@ const TechStack = () => {
   ];
 
   return (
-    <section className="w-full py-20 px-4 sm:px-6 lg:px-12 ">
-      <div className="w-full">
-        <div className="text-center mb-20">
-          <span className="inline-block px-5 py-2 bg-gradient-to-br from-[#0a0b1e] via-[#0e1447] to-[#1a0f2e] text-white  rounded-full text-sm font-bold shadow-lg">
+    <section className="w-full py-20 px-4 sm:px-6 lg:px-12 border-t border-white/[0.06] bg-zinc-950/50">
+      <div className="w-full max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <span className="inline-flex items-center px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400/90 bg-cyan-500/[0.08] border border-cyan-500/20">
             Tech Stack
           </span>
-          <h2 className="mt-6 text-4xl sm:text-5xl font-extrabold text-white">
+          <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
             Full Stack Development Expertise
           </h2>
-          <p className="mt-3 text-base sm:text-lg text-gray-300 max-w-3xl mx-auto px-2">
+          <p className="mt-4 text-base sm:text-lg text-zinc-400 max-w-3xl mx-auto px-2 leading-relaxed">
             Mastery across the entire development stack with proven technologies
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6">
           {technologies.map((tech, index) => (
             <div
               key={index}
-              className="rounded-2xl bg-gradient-to-br from-[#1f1b3a] to-[#141629] 
-                         p-6 shadow-xl hover:shadow-[0_0_25px_rgba(139,92,246,0.6)] 
-                         transition duration-300 border border-[#2a2650] w-full"
+              className="rounded-2xl bg-white/[0.02] p-6 shadow-xl transition duration-300 border border-white/[0.08] hover:border-cyan-500/25 hover:shadow-[0_0_40px_-12px_rgba(34,211,238,0.2)] w-full"
             >
-              <h3 className="text-center text-lg sm:text-xl font-bold text-white mb-6">
+              <h3 className="text-center text-base sm:text-lg font-semibold text-white mb-6">
                 {tech.category}
               </h3>
-              
-              <div className="flex flex-col space-y-5 items-start">
+
+              <div className="flex flex-col space-y-3 items-start">
                 {tech.items.map((item, i) => (
                   <div
                     key={i}
-                    className="flex items-center w-full p-3 rounded-lg 
-                               hover:bg-[#2d2a4a] transition-colors text-white duration-200"
+                    className="flex items-center w-full p-3 rounded-xl hover:bg-white/[0.04] transition-colors text-white duration-200 border border-transparent hover:border-white/[0.06]"
                   >
                     <img
                       src={item.icon}
                       alt={item.name}
-                      className="w-8 h-8 sm:w-10 sm:h-10 mr-3 object-contain"
+                      className="w-8 h-8 sm:w-9 sm:h-9 mr-3 object-contain"
                     />
-                    <div className="flex-1">
-                      <h4 className="font-bold text-white">{item.name}</h4>
-                      <p className="text-sm text-white">{item.experience}</p>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-semibold text-zinc-100 text-sm sm:text-base truncate">{item.name}</h4>
                     </div>
-                    <div className="w-3 h-3 rounded-full bg-green-400 animate-pulse"></div>
+                    <div className="w-2 h-2 rounded-full bg-cyan-400/60 shrink-0" aria-hidden />
                   </div>
                 ))}
               </div>

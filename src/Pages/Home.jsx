@@ -6,14 +6,10 @@ import {
   Sparkles, 
   Code2, 
   Cpu, 
-  Database,
-  Globe,
   Terminal
 } from 'lucide-react';
 import Marqueeslider from '../Components/Marqueeslider.jsx';
-import ShinyText from '../Components/ShinyText.jsx';
-import TrueFocus from '../Components/TrueFocus.jsx';
-import FloatingLines from '../Components/FloatingLines.jsx';
+import HeroBackground from '../Components/HeroBackground.jsx';
 import AboutMe from './AboutMe.jsx';
 import Projects from './Projects.jsx';
 import Contact from '../Components/Contact.jsx';
@@ -58,69 +54,22 @@ function Home() {
         id='home'
         className="relative flex flex-col justify-center items-center min-h-screen overflow-hidden"
       >
-        {/* Background - FloatingLines në fund */}
-        <div className="absolute inset-0 z-0">
-          <div style={{ width: '100%', height: '100vh', position: 'relative' }}>
-            <FloatingLines 
-              enabledWaves={["top","middle","bottom"]}
-              lineCount={5}
-              lineDistance={5}
-              bendRadius={5}
-              bendStrength={-0.5}
-              interactive={true}
-              parallax={true}
-            />
-          </div>
-        </div>
+        <HeroBackground />
 
-<<<<<<< Updated upstream
-        {/* Gradient overlay - mbi FloatingLines, nën content */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black z-1" />
-=======
-<<<<<<< HEAD
-        {/* Subtle gradient overlay */}
-       
-=======
-        {/* Gradient overlay - mbi FloatingLines, nën content */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black z-1" />
->>>>>>> d0ccf9f4cd12f9e6dd8a048cb1e02c3899ff9935
->>>>>>> Stashed changes
-
-        {/* Grid pattern - mbi gradient */}
-        <div className="absolute inset-0 z-2 opacity-10">
-          <div className="absolute inset-0"
+        {/* Dot grid */}
+        <div className="absolute inset-0 z-[1] opacity-[0.4] pointer-events-none">
+          <div
+            className="absolute inset-0"
             style={{
-              backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)`,
-              backgroundSize: '50px 50px'
+              backgroundImage:
+                'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0)',
+              backgroundSize: '48px 48px',
             }}
           />
         </div>
 
-        {/* Floating particles - mbi grid */}
-        <div className="absolute inset-0 z-3">
-          {[...Array(30)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
-              initial={{ 
-                x: Math.random() * 100 + 'vw',
-                y: Math.random() * 100 + 'vh',
-                opacity: 0
-              }}
-              animate={{
-                y: [null, Math.random() * -100, Math.random() * 100],
-                x: [null, Math.random() * -50, Math.random() * 50],
-                opacity: [0, 0.5, 0]
-              }}
-              transition={{
-                duration: Math.random() * 5 + 3,
-                repeat: Infinity,
-                repeatType: "loop",
-                delay: Math.random() * 2
-              }}
-            />
-          ))}
-        </div>
+        {/* Edge softening */}
+        <div className="absolute inset-0 z-[2] pointer-events-none ring-1 ring-inset ring-white/[0.04]" />
 
         {/* Main Content Container - mbi të gjitha background elementet */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-20">
@@ -140,25 +89,25 @@ function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10"
+                className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.04] backdrop-blur-md border border-white/[0.08] shadow-[0_0_0_1px_rgba(34,211,238,0.08)_inset]"
               >
                 <div className="flex gap-1">
                   <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
                   <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse delay-150" />
                   <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse delay-300" />
                 </div>
-                <span className="text-sm font-medium text-gray-300 tracking-wider">
+                <span className="text-xs sm:text-sm font-medium text-zinc-400 tracking-[0.2em]">
                   FULL-STACK DEVELOPER
                 </span>
               </motion.div>
 
               {/* Main Title with gradient */}
               <div className="space-y-4">
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-br from-white via-zinc-100 to-zinc-500">
                     MILOT
                   </span>
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500">
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-500 mt-1">
                     VERBANI
                   </span>
                 </h1>
@@ -168,7 +117,7 @@ function Home() {
                   initial={{ width: 0 }}
                   animate={{ width: '200px' }}
                   transition={{ delay: 0.5, duration: 1 }}
-                  className="h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"
+                  className="h-0.5 bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-500 rounded-full shadow-[0_0_20px_rgba(34,211,238,0.35)]"
                 />
               </div>
 
@@ -177,10 +126,10 @@ function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="text-lg sm:text-xl text-gray-300 leading-relaxed font-light max-w-xl"
+                className="text-lg sm:text-xl text-zinc-400 leading-relaxed font-normal max-w-xl"
               >
                 Crafting digital experiences with clean code and innovative solutions. 
-                Specialized in modern web technologies with <span className="text-cyan-300">4+ years</span> of full-stack development experience.
+                Specialized in modern web technologies with <span className="text-cyan-400/90 font-medium">4+ years</span> of full-stack development experience.
               </motion.p>
 
               {/* Stats Grid */}
@@ -190,10 +139,10 @@ function Home() {
                 transition={{ delay: 0.7 }}
                 className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4"
               >
-                {stats.map((stat, index) => (
+                {stats.map((stat) => (
                   <div
                     key={stat.label}
-                    className="group relative p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-cyan-500/30 transition-all duration-300"
+                    className="group relative p-4 rounded-xl bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] hover:border-cyan-500/25 hover:bg-white/[0.05] transition-all duration-300"
                   >
                     <div className="flex items-center gap-2">
                       <div className="text-cyan-400 group-hover:scale-110 transition-transform">
@@ -203,7 +152,7 @@ function Home() {
                         <div className="text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors">
                           {stat.value}
                         </div>
-                        <div className="text-xs text-gray-400 mt-1">
+                        <div className="text-xs text-zinc-500 mt-1">
                           {stat.label}
                         </div>
                       </div>
@@ -217,22 +166,14 @@ function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-<<<<<<< Updated upstream
-                className="flex flex-col sm:flex-row gap-4 pt-6 relative z-20"
-=======
-<<<<<<< HEAD
-                className="flex flex-col sm:flex-row  gap-4 pt-6"
-=======
-                className="flex flex-col sm:flex-row gap-4 pt-6 relative z-20"
->>>>>>> d0ccf9f4cd12f9e6dd8a048cb1e02c3899ff9935
->>>>>>> Stashed changes
+                className="flex flex-col sm:flex-row flex-wrap gap-4"
               >
                 {/* About Me Button */}
                 <motion.a
                   href="#about"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group relative px-8 py-4 rounded-xl overflow-hidden bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 backdrop-blur-sm"
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group relative px-8 py-4 rounded-xl overflow-hidden bg-gradient-to-r from-cyan-500/15 to-blue-600/10 border border-cyan-400/35 backdrop-blur-md shadow-[0_12px_40px_-12px_rgba(34,211,238,0.35)]"
                 >
                   <div className="relative flex items-center justify-center gap-3">
                     <span className="text-lg font-semibold bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">
@@ -247,13 +188,13 @@ function Home() {
                 <motion.a
                   href="/CV-Milot Verbani.pdf"
                   download
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group relative px-8 py-4 rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/30 transition-all"
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group relative px-8 py-4 rounded-xl overflow-hidden bg-white/[0.04] backdrop-blur-md border border-white/[0.1] hover:border-white/20 transition-all"
                 >
                   <div className="relative flex items-center justify-center gap-3">
-                    <Download className="w-5 h-5 text-gray-300" />
-                    <span className="text-lg font-semibold text-gray-300">
+                    <Download className="w-5 h-5 text-zinc-400" />
+                    <span className="text-lg font-semibold text-zinc-200">
                       Download CV
                     </span>
                   </div>
@@ -393,19 +334,19 @@ function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 mt-8"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 mt-8 pointer-events-none"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
             className="flex flex-col items-center gap-2"
           >
-            <span className="text-sm text-gray-400 tracking-wider">SCROLL</span>
-            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+            <span className="text-[10px] text-zinc-500 tracking-[0.35em] font-medium">SCROLL</span>
+            <div className="w-6 h-10 border border-white/20 rounded-full flex justify-center bg-white/[0.02]">
               <motion.div
                 animate={{ y: [0, 12, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
-                className="w-1 h-3 bg-cyan-400 rounded-full mt-2"
+                className="w-1 h-3 bg-cyan-400/90 rounded-full mt-2"
               />
             </div>
           </motion.div>

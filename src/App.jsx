@@ -8,9 +8,6 @@ import Contact from "./Components/Contact.jsx";
 import Footer from "./Components/Footer.jsx";
 import ScrollButton from "./Components/ScrollToTopButton.jsx";
 import ErrorPage from "./Pages/ErrorPage.jsx";
-import Changes from "./Components/Changes.js";
-
-
 
 function App() {
   return (
@@ -34,19 +31,3 @@ function App() {
 }
 
 export default App;
-
-   { /*
-     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/AboutMe" element={<AboutMe />} />
-        <Route path='/Projects' element={<Projects />} />
-           <Route path='/Contactme' element={<Contact />} />
-           <Route path="*" element={<ErrorPage />} />
-      </Routes>
-      <ScrollButton />
-      <Footer />
-    </Router>
-    */
-    }
